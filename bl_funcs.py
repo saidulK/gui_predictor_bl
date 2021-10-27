@@ -87,7 +87,7 @@ class bl_receiver(threading.Thread):
         self.create_socket()
         self.search_connection()
         if self.write_to_file:
-            acc_file,gyro_file = self.create_file("G:/bluetooth/")
+            acc_file,gyro_file = self.create_file("")
 
         prefix = ""
 

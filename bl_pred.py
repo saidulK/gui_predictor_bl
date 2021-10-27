@@ -21,7 +21,7 @@ from keras import backend as K
 from models import *
 from bl_funcs import *
 from config import *
-
+import os
 
 
 class predictor:
@@ -37,14 +37,14 @@ class predictor:
         self.acc_wrp_gravity = True
 
     def setup_prediction(self):
-        model_config = model_settings_3
-        '''with open("G:/bluetooth/models/" + model_config['model_name'] + ".json") as model_file:
-            model_json    = model_file.read()'''
+        model_config = model_settings_1
+
         model_name = model_config['model_name']
         in_shape,out_shape = model_config['in_out_shape'][0],model_config['in_out_shape'][1]
         self.model        = model_names[model_name](in_shape,out_shape)
-        self.model.load_weights("G:/bluetooth/models/"+model_config['weights'])
-        mean_std_json     = json.load(open("G:/bluetooth/dataset_info/"+model_config['mean_std']+".json"))
+
+        self.model.load_weights("models/"+model_config['weights'])
+        mean_std_json     = json.load(open("dataset_info/"+model_config['mean_std']+".json"))
 
         mean_json         = mean_std_json['mean']
         self.mean         = self.load_array_from_json(mean_json)
@@ -54,7 +54,7 @@ class predictor:
         self.std          = self.load_array_from_json(std_json)
         self.std          = np.array(self.std)
 
-        activities_json   = json.load(open("G:/bluetooth/dataset_info/"+model_config['activities']+".json"))
+        activities_json   = json.load(open("dataset_info/"+model_config['activities']+".json"))
         self.activities   = self.load_array_from_json(activities_json)
 
         print("Model setup successful")
