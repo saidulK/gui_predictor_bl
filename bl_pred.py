@@ -43,7 +43,8 @@ class predictor:
         in_shape,out_shape = model_config['in_out_shape'][0],model_config['in_out_shape'][1]
         self.model        = model_names[model_name](in_shape,out_shape)
 
-        self.model.load_weights("models/"+model_config['weights'])
+        location = os.getcwd()
+        self.model.load_weights(os.path.join(location,"models",model_config['weights']))
         mean_std_json     = json.load(open("dataset_info/"+model_config['mean_std']+".json"))
 
         mean_json         = mean_std_json['mean']
