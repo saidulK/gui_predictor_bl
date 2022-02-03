@@ -31,7 +31,7 @@ class ConnectionLabel(QLabel):
         self.setStyleSheet("background-color: {}; border-radius:10px;color: {};padding :15px".format(self.colors['bg_color'],self.colors['text_color']))
         self.setFont(QtGui.QFont('Monserrat', 18))
         self.setAlignment(QtCore.Qt.AlignLeft)
-        self.setIPPort("","")
+        self.set_connection_status()
 
     def setIPPort(self,IP,PORT):
         header = "<font color={}>Connection:</font>".format(self.colors['text_color'])
@@ -42,6 +42,28 @@ class ConnectionLabel(QLabel):
             server_text ="<font color={}>Server running at IP : </font><font color={}> {} </font>  ".format(self.colors['text_color'],self.colors['text_second_color'],IP)
             port_text   = "<font color={}>PORT:</font><font color={}>{}</font>".format(self.colors['text_color'],self.colors['text_second_color'],PORT)
             text = header+"<br>"+server_text+port_text
+            self.setText(text)
+
+    def set_connection_status(self,Socket=None,Client=None):
+        header = "<font color={}>Connection:</font>".format(self.colors['text_color'])
+
+        if Socket == None and Client == None:
+
+            text = header+'<br>'+'No Connection'
+            self.setText(text)
+
+        elif Client == None:
+
+            server_text ="<font color={}>Bluetooth RFCOMM Channel: </font><font color={}> {} </font>  ".format(self.colors['text_color'],self.colors['text_second_color'],Socket)
+            port_text   = "<font color={}>Client Address:</font><font color={}>{}</font>".format(self.colors['text_color'],self.colors['text_second_color'],"Not Connected")
+            text = header+"<br>"+server_text+"<br>"+port_text
+            self.setText(text)
+
+        else:
+
+            server_text ="<font color={}>Bluetooth RFCOMM Channel : </font><font color={}> {} </font>  ".format(self.colors['text_color'],self.colors['text_second_color'],Socket)
+            port_text   = "<font color={}>Client Address:</font><font color={}>{}</font>".format(self.colors['text_color'],self.colors['text_second_color'],Client)
+            text = header+"<br>"+server_text+"<br>"+port_text
             self.setText(text)
 
 class PredictionLabel(QWidget):

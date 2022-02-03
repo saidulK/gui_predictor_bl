@@ -8,9 +8,10 @@ import time
 
 class bl_receiver(threading.Thread):
 
-    def __init__(self):
+    def __init__(self,parent):
         threading.Thread.__init__(self)
         self.uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
+        self.parent = parent
         self.lock = threading.Lock()
         self.server_socket = None
         self.client_socket = None
@@ -56,10 +57,12 @@ class bl_receiver(threading.Thread):
                                         protocols=[bluetooth.OBEX_UUID]
                                         )
             port = self.server_socket.getsockname()[1]
+            #self.parent.update_connection_status(port)
             print("Waiting for connection on RFCOMM channel", port)
             client_sock, client_info = self.server_socket.accept()
             print("Accepted connection from", client_info)
             self.client_socket,self.client_info=client_sock, client_info
+            self.parent.update_connection_status(port,self.client_info)
 
         except Exception as e:
             print("Couldn't connect to device",e)

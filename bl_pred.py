@@ -37,7 +37,8 @@ class predictor:
         self.acc_wrp_gravity = True
 
     def setup_prediction(self):
-        model_config = model_settings_1
+
+        model_config = model_settings_LSTM_CNN
 
         model_name = model_config['model_name']
         in_shape,out_shape = model_config['in_out_shape'][0],model_config['in_out_shape'][1]
@@ -92,6 +93,7 @@ class predictor:
         body_data = acc_data - np.array([butter_lowpass_filter(data, 0.3, 50, 1) for data in acc_data.T]).T
         total_data = np.hstack((body_data, gyro_data, acc_data))
         return total_data
+    
 
     def ns_to_s(self,value):
         return value/1000000000
@@ -143,10 +145,11 @@ class predictor:
             min_len = min(len(acc_data), len(gyro_data))
             acc_data, gyro_data = acc_data[-min_len:], gyro_data[-min_len:]
 
-            if self.acc_wrp_gravity:
-                acc_data = acc_data/9.81
+            #if self.acc_wrp_gravity:
+            #    acc_data = acc_data/9.81
 
-            total_data = self.create_array(acc_data,gyro_data)
+            #total_data = self.create_array(acc_data,gyro_data)
+            total_data = np.hstack((acc_data,gyro_data))
             total_data = create_windows(total_data, self.window_size, self.window_overlap)
             return total_data
 
@@ -174,7 +177,7 @@ class predictor:
 
                 prediction = self.model.predict(final_data)
 
-                confidence,act_no = self.take_votes(prediction)
+                confidence,act_no = self.take_votes(prediction,5)
 
                 print(self.activities[act_no],act_no,confidence)
                 return confidence,act_no
@@ -185,6 +188,7 @@ class predictor:
                 #print("pdata is none")
         except Exception as e:
 
+            
             print(e)
 
 

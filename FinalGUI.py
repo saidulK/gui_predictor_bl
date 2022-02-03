@@ -74,15 +74,15 @@ class Window(QMainWindow):
         '''self.dataBuffer = dataBuffer(self,self.server)
         self.setupUI()
 
-        self.connectionWidget.setIPPort(str(self.server.getIP()),str(self.server.getPort()))
+        self.connectionWidget.setIPPort(str(self.server.getIP()),str(self.server.getPort()))'''
         self.graph_timer = QtCore.QTimer()
         self.graph_timer.timeout.connect(self.update_graph)
-        self.graph_timer.start(GRAPH_REFRESH_INTERVAL)'''
+        self.graph_timer.start(GRAPH_REFRESH_INTERVAL)
 
 
-        self.graph_timer = QtCore.QTimer()
-        self.graph_timer.timeout.connect(self.make_prediction)
-        self.graph_timer.start(PREDICTION_INTERVAL)
+        self.pred_timer = QtCore.QTimer()
+        self.pred_timer.timeout.connect(self.make_prediction)
+        self.pred_timer.start(PREDICTION_INTERVAL)
 
         #self.show()
 
@@ -126,9 +126,10 @@ class Window(QMainWindow):
         data = self.server.get_buffer_data()
         pred = self.predictor.predict(data)
         if pred is not None:
-            activity = self.predictor.activities[pred]
+            confidence,act_no = pred
+            activity = self.predictor.activities[act_no]
             self.predictionWidget.set_prediction(activity)
-            #self.confidenceWidget.set_values(pred)
+            self.confidenceWidget.set_values(confidence)
 
 
 

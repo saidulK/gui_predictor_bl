@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5 import QtWidgets
 from pyqtgraph import *
 
@@ -104,6 +104,22 @@ class GraphWidget(GraphicsLayoutWidget):
         return QtCore.QSize(600,400)
 
 
+class ButtonWidget(QPushButton):
+
+    def __init__(self,parent,function):
+        QPushButton.__init__(self,parent)
+        self.parent = parent
+        self.text = "Start"
+        self.setStyleSheet("color: rgb(0, 0, 0);\n"
+                                    "background-color: rgb(90, 255, 109);\n"
+                                    "font: 500 12pt \"Poppins\";")
+       
+        self.setText(self.text)
+        self.clicked.connect(lambda: function)
+
+    def sizeHint(self):
+        return QtCore.QSize(100,50)
+
 
 
 
@@ -113,7 +129,7 @@ if __name__ =='__main__':
     #window = Window()
     w = QMainWindow()
 
-    graph = GraphWidget(w,3,2)
+    graph = ButtonWidget(w)
     #graph = newPlot(w)
     w.setCentralWidget(graph)
 
