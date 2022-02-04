@@ -177,7 +177,7 @@ class predictor:
 
                 prediction = self.model.predict(final_data)
 
-                confidence,act_no = self.take_votes(prediction,5)
+                confidence,act_no = self.take_votes(prediction)
 
                 print(self.activities[act_no],act_no,confidence)
                 return confidence,act_no

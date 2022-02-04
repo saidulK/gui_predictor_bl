@@ -31,13 +31,13 @@ model_settings_6  = {'model_name':'CNN_LSTM','mean_std':'UCI_AUG_mean_std','acti
 model_settings_LSTM_CNN = {'model_name':'LSTM_CNN',
                            'mean_std':'hardware_mean_std',
                            'activities':'hardware_activities',
-                           'in_out_shape':[(128,6),8],
-                           'weights':'weights-LSTM_CNN damko_harware.h5'}
+                           'in_out_shape':[(128,6),7],
+                           'weights':'weights-LSTM_CNN damko_hardware.h5'}
 
 model_settings_LSTM_CNN_PARALLEL = {'model_name':'LSTM_CNN_PARALLEL',
                            'mean_std':'hardware_mean_std',
                            'activities':'hardware_activities',
-                           'in_out_shape':[(128,6),8],
+                           'in_out_shape':[(128,6),7],
                            'weights':'weights-LSTM_CNN_PARALLEL damko_hardware.h5'}
 
 

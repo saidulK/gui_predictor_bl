@@ -75,11 +75,11 @@ class Window(QMainWindow):
         if len(data['Acc']) != 0 and len(data['Gyro']) != 0:
             acc_data = np.array(data['Acc']).T[1:]
             acc_time = np.array(data['Acc']).T[0]
-            acc_time = self.predictor.ns_to_s(acc_time - acc_time[0])
+            acc_time = (acc_time - acc_time[0])/1000000000
 
             gyro_data = np.array(data['Gyro']).T[1:]
             gyro_time = np.array(data['Gyro']).T[0]
-            gyro_time = self.predictor.ns_to_s(gyro_time - gyro_time[0])
+            gyro_time = (gyro_time - gyro_time[0])/1000000000
 
             data = []
             time = []

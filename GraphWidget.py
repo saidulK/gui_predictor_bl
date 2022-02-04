@@ -4,9 +4,9 @@ from pyqtgraph import *
 
 graph_titles = [["Accelerometer","Gyroscope"],["AccelerometerY","GyroscopeY"],["AccelerometerZ","GyroscopeZ"]]
 graph_left   = [["X Axis"],["Y Axis"],["Z Axis"]]
-graph_Yrange = [ [[-20,20],[-20,20]]
-                ,[[-20,20],[-20,20]]
-                ,[[-20,20],[-20,20]]]
+graph_Yrange = [ [[-10,10],[-20,20]]
+                ,[[-10,10],[-20,20]]
+                ,[[-10,10],[-20,20]]]
 
 graph_Xrange = [ [[],[]]
                 ,[[],[]]
