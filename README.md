@@ -19,9 +19,9 @@ Data processing: numpy, matplotlib, pandas, pickle
 
 GUI: PyQt5, pyqtgraph 
 
-machine learning: sklearn, tensorflow, keras
+Machine learning: sklearn, tensorflow, keras
 
-bluetooth: pybluez
+Bluetooth: pybluez
 
 ## Download and Usage
 App link: https://github.com/saidulK/bluetooth_data_streamer
