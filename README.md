@@ -16,8 +16,11 @@ A Graphical User Interface (GUI) was built using python library PyQt5 for the sy
 
 ## Dependencies 
 Data processing: numpy, matplotlib, pandas, pickle
+
 GUI: PyQt5, pyqtgraph 
+
 machine learning: sklearn, tensorflow, keras
+
 bluetooth: pybluez
 
 ## Download and Usage
