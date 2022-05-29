@@ -11,7 +11,7 @@ A python program was written using the pybluez library that maintained connectio
 ### Graphical User Interface (GUI)
 A Graphical User Interface (GUI) was built using python library PyQt5 for the sytem.
 
-# Flowchart
+#### Flowchart
 ![FlowChart](./flowchart.png)
 
  
