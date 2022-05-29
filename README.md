@@ -13,6 +13,8 @@ A Graphical User Interface (GUI) was built using python library PyQt5 for the sy
 
 *Add flowchart*
 *Add GIF of project* 
+![](./flowchart.png)
+![](./project trial.gif)
 
 ## Dependencies 
 Data processing: numpy, matplotlib, pandas, pickle
