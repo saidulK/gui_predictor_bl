@@ -13,7 +13,7 @@ from BarChartWidget import *
 from Labels import *
 
 
-PREDICT_EVERY = 500
+PREDICT_EVERY = 100
 GRAPH_UPDATE_DELAY = 30
 
 class Window(QMainWindow):
