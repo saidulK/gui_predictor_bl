@@ -11,10 +11,11 @@ A python program was written using the pybluez library that maintained connectio
 ### Graphical User Interface (GUI)
 A Graphical User Interface (GUI) was built using python library PyQt5 for the sytem.
 
-*Add flowchart*
-*Add GIF of project* 
-![](./flowchart.png)
-![](./project_trial.gif)
+#Flowchart
+![FlowChart](./flowchart.png)
+
+
+![Video](./project_trial.gif)
 
 ## Dependencies 
 Data processing: numpy, matplotlib, pandas, pickle
